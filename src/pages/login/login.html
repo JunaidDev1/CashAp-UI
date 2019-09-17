@@ -1,0 +1,83 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <ion-header>
+  <ion-navbar>
+    <ion-title>login</ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content>
+
+  <ion-grid class="topSection boxShadow">
+    <div text-center>
+      <img src="./assets/imgs/appLogo.PNG" class="appLogo">
+      <p><strong>Cash</strong> App</p>
+    </div>
+    <ion-segment [(ngModel)]="accountTabs">
+      <ion-segment-button value="login">Login</ion-segment-button>
+      <ion-segment-button value="signup">Sign up</ion-segment-button>
+    </ion-segment>
+  </ion-grid>
+
+  <ion-grid [(ngSwitch)]="accountTabs" class="inputSection">
+
+    <div *ngSwitchCase="'login'">
+      <ion-item no-lines>
+        <ion-input type="tel" placeholder="Phone Number"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <button (click)="toHome()" class="h-45" ion-button block>Sign in</button>
+      <p text-right class="gray">
+        <span (click)="navCtrl.push('ResetPasswordPage')">Forgot your password?</span>
+      </p>
+    </div>
+
+    <div *ngSwitchCase="'signup'">
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="First Name"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input type="text" placeholder="Last Name"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input type="email" placeholder="Email Address"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input type="tel" placeholder="Phone Number"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-item no-lines>
+        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+      </ion-item>
+      <button (click)="showSuccess=true" class="h-45" ion-button block>Sign up</button>
+    </div>
+
+  </ion-grid>
+
+</ion-content>
+
+<ion-footer text-center>
+  <p>
+    <small>Powered by : Omegasoft Technology LLC</small>
+  </p>
+</ion-footer>
+
+
+<div *ngIf="showSuccess" class="successModal">
+  <div padding class="center innerDiv">
+    <img src="./assets/imgs/user-check-512.png">
+    <h5>Your account has been created successfully!</h5>
+    <p>
+      Remember <strong>$12john</strong> is your username, and will be used in order to send and receive money.
+    </p>
+    <button class="h-45" ion-button block small (click)="navCtrl.push('RegisterCardPage')">Proceed</button>
+  </div>
+</div>

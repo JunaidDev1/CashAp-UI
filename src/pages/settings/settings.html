@@ -1,0 +1,93 @@
+<!--
+  Generated template for the SettingsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>settings</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-label style="padding-left: 10px;">My Account</ion-label>
+
+  <ion-list class="boxShadow mb-0">
+    <ion-item (click)="navCtrl.push('ProfilePage')">
+      <ion-label>Profile</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navCtrl.push('UpdatePasswordPage')">
+      <ion-label>Change Password</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item (click)="navCtrl.push('PaymentGatewaysPage')">
+      <ion-label>Payment Gateways</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <ion-label style="padding-left: 10px;">Languages</ion-label>
+
+  <ion-list class="boxShadow mb-0">
+    <ion-item>
+      <ion-label class="dark">Language</ion-label>
+      <ion-select interface="popover" [(ngModel)]="selectedLanguage">
+        <ion-option value="english">English</ion-option>
+        <ion-option value="portuguese">Portuguese</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-label style="padding-left: 10px;">Notification & Alerts</ion-label>
+
+  <ion-list class="boxShadow mb-0">
+    <ion-item>
+      <ion-label>
+        <h5>Push Notifications</h5>
+        <p>Get notified when cash is received</p>
+      </ion-label>
+      <ion-toggle item-end checked="true"></ion-toggle>
+    </ion-item>
+  </ion-list>
+
+  <ion-label style="padding-left: 10px;">Legal</ion-label>
+
+  <ion-list class="boxShadow mb-0">
+    <ion-item>
+      <ion-label>Privacy Policy</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Terms of Service</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>About Us</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+    <ion-item>
+      <ion-label>Help & Support</ion-label>
+      <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+  <div style="padding: 5px 8px;">
+    <button (click)="navCtrl.setRoot('LoginPage')" ion-button block class="h-45">Sign Out</button>
+  </div>
+
+</ion-content>
+
+
+<div *ngIf="selectedLanguage=='portuguese'" class="successModal">
+  <div padding class="center innerDiv">
+    <h3>Coming soon!</h3>
+    <p>Language translation is coming soon in the update!</p>
+    <button (click)="selectedLanguage='english'" ion-button outline small>Dismiss</button>
+  </div>
+</div>

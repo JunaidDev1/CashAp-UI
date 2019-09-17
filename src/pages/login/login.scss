@@ -1,0 +1,29 @@
+page-login {
+  ion-content {
+    background-color: color($colors, light) !important;
+  }
+  .topSection {
+    background-color: color($colors, lighter);
+    padding: 7em 0em 0em 0em;
+    img {
+      width: 80px;
+    }
+    p {
+      font-size: 20px;
+      margin: 5px 0px 30px 0px;
+    }
+    ion-segment-button {
+      text-transform: none !important;
+    }
+  }
+
+  .inputSection {
+    padding: 20px 20px 0px 20px;
+    ion-item {
+      border: 1px solid #dedede !important;
+      border-radius: 5px !important;
+      margin-bottom: 10px !important;
+      padding-left: 8px;
+    }
+  }
+}

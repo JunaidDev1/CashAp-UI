@@ -1,0 +1,35 @@
+page-home {
+  ion-content {
+    background-color: color($colors, light) !important;
+    .innerDiv {
+      padding: 10px;
+      background-color: #ffffff;
+      img {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+      }
+    }
+
+    ion-item {
+      padding-left: 10px !important;
+      margin-bottom: 10px !important;
+      border-left: 2px solid !important;
+      border-color: color($colors, secondary) !important;
+
+      [item-start] {
+        width: 45px;
+        text-align: center;
+        margin: 0px 15px 0px 0px !important;
+        background-color: color($colors, primary);
+        color: #ffffff;
+        padding: 5px !important;
+        border-radius: 5px;
+      }
+
+      h5 {
+        margin-top: 0px !important;
+      }
+    }
+  }
+}

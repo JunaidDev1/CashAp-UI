@@ -1,0 +1,46 @@
+page-add-money {
+  ion-content {
+    .inputTxt {
+      border-radius: 5px !important;
+      margin-bottom: 10px !important;
+      background-color: color($colors, light) !important;
+    }
+  }
+
+  ion-list {
+    ion-list-header {
+      background-color: color($colors, light) !important;
+    }
+    ion-avatar {
+      img {
+        border-radius: 0px !important;
+        width: 40px !important;
+        object-fit: contain !important;
+        height: 40px !important;
+      }
+    }
+  }
+
+  ion-grid {
+    background-color: #ffffff;
+
+    ion-col {
+      border-bottom: 1px solid #dedede;
+    }
+
+    .heading {
+      color: gray !important;
+      font-size: 12px !important;
+      text-transform: uppercase !important;
+      margin: 5px 0px !important;
+      text-align: center !important;
+    }
+
+    .subhead {
+      color: #292929 !important;
+      margin: 2px 0px !important;
+      text-align: center !important;
+      text-transform: capitalize !important;
+    }
+  }
+}

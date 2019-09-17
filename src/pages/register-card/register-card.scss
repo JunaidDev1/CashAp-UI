@@ -1,0 +1,29 @@
+page-register-card {
+  .inputRow {
+    margin-top: 12px;
+    background-color: color($colors, light);
+    padding-left: 10px !important;
+
+    .text-input {
+      margin: 15px 0px !important;
+    }
+  }
+
+  ion-item {
+    background-color: color($colors, light) !important;
+    margin-top: 12px !important;
+    padding-left: 0px !important;
+
+    ion-label {
+      margin: 15px 0px 14px 14px !important;
+      font-weight: 500 !important;
+      font-size: 13px !important;
+    }
+  }
+
+  p {
+    ion-icon {
+      color: green !important;
+    }
+  }
+}

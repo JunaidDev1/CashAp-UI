@@ -1,0 +1,53 @@
+<ion-menu [content]="content" type="overlay">
+  <ion-header padding>
+    <ion-grid padding>
+      <p class="mb-0">
+        <img src="./assets/imgs/user.png" menuClose class="userImg" (click)="nav.push(appPages.profilePage)">
+      </p>
+      <p class="userName">John Doe</p>
+    </ion-grid>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.homePage)">
+        <ion-icon name="home" item-start></ion-icon>
+        Home <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.profilePage)">
+        <ion-icon name="person" item-start></ion-icon>
+        Profile <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.homePage)">
+        <ion-icon name="information-circle" item-start></ion-icon>
+        About Us <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.homePage)">
+        <ion-icon name="share" item-start></ion-icon>
+        Contact Us <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.homePage)">
+        <ion-icon name="list" item-start></ion-icon>
+        Terms & Conditions <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button menuClose ion-item icon-left (click)="nav.push(appPages.settingsPage)">
+        <ion-icon name="settings" item-start></ion-icon>
+        Settings <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.loginPage)">
+        <ion-icon name="log-out" item-start></ion-icon>
+        Logout <ion-icon name="ios-arrow-forward" item-end></ion-icon>
+      </button>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer>
+    <p text-center>
+      <small>Powered by : Omegasoft Technology LLC</small>
+    </p>
+  </ion-footer>
+
+</ion-menu>
+
+<!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

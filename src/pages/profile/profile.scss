@@ -1,0 +1,28 @@
+page-profile {
+  ion-content {
+    .userInfo {
+      margin-top: 10px !important;
+      img {
+        width: 60px !important;
+        height: 60px !important;
+        object-fit: cover;
+        background-color: #f4f4f4;
+      }
+    }
+  }
+
+  .profileTab {
+    ion-item {
+      border-bottom: 1px solid #dedede !important;
+      ion-label {
+        color: color($colors, primary) !important;
+      }
+    }
+
+    p {
+      button {
+        width: 180px !important;
+      }
+    }
+  }
+}
