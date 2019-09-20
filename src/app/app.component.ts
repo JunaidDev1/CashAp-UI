@@ -30,8 +30,13 @@ export class MyApp {
       homePage: HomePage,
       profilePage: 'ProfilePage',
       settingsPage: 'SettingsPage',
-      loginPage: 'LoginPage'
+      loginPage: 'LoginPage',
+      aboutUs: 'AboutUsPage',
+      privacyPolicy: 'PrivacyPolicyPage',
+      termsConditions: 'TermsConditionsPage',
     }
+
+    this.statusBar.backgroundColorByHexString('#f1f1f1');
 
   }
 

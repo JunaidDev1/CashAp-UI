@@ -20,7 +20,7 @@
     <ion-col col-6 class="pl-0">
       <div class="center innerDiv boxShadow">
         <img src="./assets/imgs/send-money-36-1131476.png">
-        <button (click)="navCtrl.push('SendMoneyPage')" ion-button outline small block>Send Money</button>
+        <button (click)="openConfirm=true" ion-button outline small block>Send Money</button>
       </div>
     </ion-col>
     <ion-col col-6 class="pr-0">
@@ -89,3 +89,26 @@
   </ion-item>
 
 </ion-content>
+
+<div *ngIf="openConfirm" class="successModal">
+  <div padding class="center innerDiv">
+    <h2>Send Money!</h2>
+    <p>
+      Please choose the option to send money.
+    </p>
+    <ion-row>
+      <ion-col col-6 class="pl-0">
+        <button class="h-45" icon-start ion-button block small (click)="navCtrl.push('SendMoneyPage')">
+          <ion-icon name="person"></ion-icon> One Person
+        </button>
+      </ion-col>
+      <ion-col col-6 class="pr-0">
+        <button class="h-45" icon-start ion-button block small color="secondary"
+          (click)="navCtrl.push('SendToManyPage')">
+          <ion-icon name="people"></ion-icon> Many Persons
+        </button>
+      </ion-col>
+    </ion-row>
+    <button (click)="openConfirm=false" ion-button clear>Cancel</button>
+  </div>
+</div>

@@ -1,5 +1,8 @@
 page-payment-gateways {
   ion-list {
+    ion-list-header{
+      background-color: color($colors, light) !important;
+    }
     ion-avatar {
       img {
         border-radius: 0px !important;

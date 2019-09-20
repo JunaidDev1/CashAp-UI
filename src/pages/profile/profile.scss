@@ -13,15 +13,10 @@ page-profile {
 
   .profileTab {
     ion-item {
+      padding-left: 0px !important;
       border-bottom: 1px solid #dedede !important;
       ion-label {
         color: color($colors, primary) !important;
-      }
-    }
-
-    p {
-      button {
-        width: 180px !important;
       }
     }
   }

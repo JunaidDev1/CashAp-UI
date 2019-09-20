@@ -12,7 +12,7 @@
 
 <ion-content padding>
 
-  <ion-label class="mt-0">Transaction Details:</ion-label>
+  <p class="mt-0">*Enter the user-code of the person whom you are sending money</p>
   <div class="inputTxt">
     <ion-item no-lines>
       <ion-input type="text" placeholder="User Code"></ion-input>
@@ -61,9 +61,15 @@
 <div *ngIf="showConfirm" class="successModal">
   <div padding class="center innerDiv">
     <h2>Send Money!</h2>
-    <p>Please review your transaction details.</p>
-    <hr />
-    <h4>Send $43.00 to Sam Doe.</h4>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="./assets/imgs/user-1.png" style="width: 40px !important;">
+      </ion-avatar>
+      <ion-label>
+        <p>Sam Doe</p>
+        <h2>Send: $43.00</h2>
+      </ion-label>
+    </ion-item>
     <p>Please input your passowrd to confirm your transaction.</p>
     <ion-item no-lines>
       <ion-input type="passowrd" placeholder="Password"></ion-input>
@@ -76,9 +82,6 @@
         <button (click)="showConfirm=false; showSuccess=true" ion-button block class="h-45">Send</button>
       </ion-col>
     </ion-row>
-    <p class="gray">
-      <small>*Currency conversion fees are included.</small>
-    </p>
   </div>
 </div>
 

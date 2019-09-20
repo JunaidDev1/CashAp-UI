@@ -59,15 +59,15 @@
   <ion-label style="padding-left: 10px;">Legal</ion-label>
 
   <ion-list class="boxShadow mb-0">
-    <ion-item>
+    <ion-item (click)="navCtrl.push('PrivacyPolicyPage')">
       <ion-label>Privacy Policy</ion-label>
       <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item (click)="navCtrl.push('TermsConditionsPage')">
       <ion-label>Terms of Service</ion-label>
       <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
     </ion-item>
-    <ion-item>
+    <ion-item (click)="navCtrl.push('AboutUsPage')">
       <ion-label>About Us</ion-label>
       <ion-icon item-end small name="ios-arrow-forward"></ion-icon>
     </ion-item>

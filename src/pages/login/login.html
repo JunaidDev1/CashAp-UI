@@ -14,8 +14,7 @@
 
   <ion-grid class="topSection boxShadow">
     <div text-center>
-      <img src="./assets/imgs/appLogo.PNG" class="appLogo">
-      <p><strong>Cash</strong> App</p>
+      <img src="./assets/imgs/appLogo.jpg" class="appLogo">
     </div>
     <ion-segment [(ngModel)]="accountTabs">
       <ion-segment-button value="login">Login</ion-segment-button>
@@ -64,19 +63,13 @@
 
 </ion-content>
 
-<ion-footer text-center>
-  <p>
-    <small>Powered by : Omegasoft Technology LLC</small>
-  </p>
-</ion-footer>
-
 
 <div *ngIf="showSuccess" class="successModal">
   <div padding class="center innerDiv">
     <img src="./assets/imgs/user-check-512.png">
     <h5>Your account has been created successfully!</h5>
     <p>
-      Remember <strong>$12john</strong> is your username, and will be used in order to send and receive money.
+      Remember <strong>$12john</strong> is your usercode, and will be used in order to send and receive money.
     </p>
     <button class="h-45" ion-button block small (click)="navCtrl.push('RegisterCardPage')">Proceed</button>
   </div>

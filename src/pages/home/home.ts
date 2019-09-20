@@ -7,8 +7,14 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
+  openConfirm = false;
+  
   constructor(public navCtrl: NavController) {
 
+  }
+
+  ionViewWillEnter() {
+    this.openConfirm = false;
   }
 
 }

@@ -6,26 +6,29 @@
 -->
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>profile</ion-title>
     <ion-buttons end>
-      <button ion-button outline color="lighter">Username: $12john</button>
+      <button ion-button outline color="lighter">Usercode: $12john</button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-item no-lines class="userInfo">
+  <ion-item class="userInfo">
     <ion-avatar item-start>
       <img src="./assets/imgs/user.png">
     </ion-avatar>
     <ion-label>
-      <h1>John Doe</h1>
+      <h2>John Doe</h2>
       <p>Member since: 20/08/2019</p>
     </ion-label>
   </ion-item>
 
-  <div class="profileTab">
+  <div padding class="profileTab">
     <ion-list class="mb-0" no-lines>
       <ion-item>
         <ion-label stacked>First Name</ion-label>
@@ -41,7 +44,7 @@
       </ion-item>
       <ion-item>
         <ion-label stacked>Phone Number</ion-label>
-        <ion-input type="tel" placeholder="971 55 453 3681"></ion-input>
+        <ion-input type="tel" placeholder="+97 55 453 3681"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label stacked>City</ion-label>
@@ -52,9 +55,7 @@
         <ion-input type="text" placeholder="France"></ion-input>
       </ion-item>
     </ion-list>
-    <p class="center">
-      <button ion-button round (click)="navCtrl.pop()">UPDATE</button>
-    </p>
+    <button ion-button block class="h-45 mt-1" (click)="navCtrl.pop()">Update Profile</button>
   </div>
 
 </ion-content>

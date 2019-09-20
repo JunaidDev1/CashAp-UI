@@ -1,0 +1,19 @@
+page-send-to-many {
+  ion-content {
+    div {
+      ion-input {
+        background-color: color($colors, light);
+        .text-input {
+          margin: 11px 0px !important;
+          text-align: center;
+        }
+      }
+      button {
+        margin-top: 1.5px !important;
+      }
+      h3 {
+        margin-top: 0px !important;
+      }
+    }
+  }
+}
