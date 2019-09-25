@@ -8,6 +8,23 @@ import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { UtilsProvider } from '../providers/utils/utils';
+import * as firebase from 'firebase';
+
+
+var firebaseConfig = {
+  apiKey: "AIzaSyAICNaTIUFC_f4sMgZjB-XE28z252E6tLA",
+  authDomain: "whatspay-cb555.firebaseapp.com",
+  databaseURL: "https://whatspay-cb555.firebaseio.com",
+  projectId: "whatspay-cb555",
+  storageBucket: "whatspay-cb555.appspot.com",
+  messagingSenderId: "782233150545",
+  appId: "1:782233150545:web:cfa40aac8ed825401f8470",
+  measurementId: "G-GR3M7N7J3E"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 
 @NgModule({
   declarations: [
@@ -28,7 +45,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    UtilsProvider,
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

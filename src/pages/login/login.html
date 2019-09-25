@@ -24,39 +24,84 @@
 
   <ion-grid [(ngSwitch)]="accountTabs" class="inputSection">
 
-    <div *ngSwitchCase="'login'">
+    <div [formGroup]="onLoginForm" *ngSwitchCase="'login'">
       <ion-item no-lines>
-        <ion-input type="tel" placeholder="Phone Number"></ion-input>
+        <ion-input [(ngModel)]="emailAddress" formControlName="emailAddress" type="email" placeholder="Email">
+        </ion-input>
       </ion-item>
+      <p class="errorMsg"
+        *ngIf="onLoginForm.get('emailAddress').touched && onLoginForm.get('emailAddress').hasError('required')">Email
+        is required</p>
+
       <ion-item no-lines>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input [(ngModel)]="password" formControlName="password" type="password" placeholder="Password"></ion-input>
       </ion-item>
-      <button (click)="toHome()" class="h-45" ion-button block>Sign in</button>
+      <p class="errorMsg"
+        *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">Password
+        is required</p>
+
+      <button (click)="onLogin()" [disabled]="!onLoginForm.valid" class="h-45" ion-button block>Sign in</button>
       <p text-right class="gray">
         <span (click)="navCtrl.push('ResetPasswordPage')">Forgot your password?</span>
       </p>
     </div>
 
-    <div *ngSwitchCase="'signup'">
+    <div [formGroup]="onRegisterForm" *ngSwitchCase="'signup'">
       <ion-item no-lines>
-        <ion-input type="text" placeholder="First Name"></ion-input>
+        <ion-input [(ngModel)]="firstName" formControlName="firstName" type="text" placeholder="First Name"></ion-input>
       </ion-item>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('firstName').touched && onRegisterForm.get('firstName').hasError('required')">This
+        field is required</p>
+
       <ion-item no-lines>
-        <ion-input type="text" placeholder="Last Name"></ion-input>
+        <ion-input [(ngModel)]="lastName" formControlName="lastName" type="text" placeholder="Last Name"></ion-input>
       </ion-item>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('lastName').touched && onRegisterForm.get('lastName').hasError('required')">This
+        field is required</p>
+
       <ion-item no-lines>
-        <ion-input type="email" placeholder="Email Address"></ion-input>
+        <ion-input [(ngModel)]="emailAddress" formControlName="emailAddress" type="email" placeholder="Email Address">
+        </ion-input>
       </ion-item>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('emailAddress').touched && onRegisterForm.get('emailAddress').hasError('required')">
+        This field is required</p>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('emailAddress').touched && onRegisterForm.get('emailAddress').hasError('pattern')">
+        Invalid Email address</p>
+
       <ion-item no-lines>
-        <ion-input type="tel" placeholder="Phone Number"></ion-input>
+        <ion-input [(ngModel)]="phoneNumber" formControlName="phoneNumber" type="tel" placeholder="Phone Number">
+        </ion-input>
       </ion-item>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('phoneNumber').touched && onRegisterForm.get('phoneNumber').hasError('required')">This
+        field is required</p>
+
       <ion-item no-lines>
-        <ion-input type="password" placeholder="Password"></ion-input>
+        <ion-input [(ngModel)]="password" formControlName="password" type="password" placeholder="Password"></ion-input>
       </ion-item>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('password').touched && onRegisterForm.get('password').hasError('required')">This
+        field is required</p>
+
       <ion-item no-lines>
-        <ion-input type="password" placeholder="Confirm Password"></ion-input>
+        <ion-input [(ngModel)]="confirmPassword" formControlName="confirmPassword" type="password"
+          placeholder="Confirm Password"></ion-input>
       </ion-item>
-      <button (click)="showSuccess=true" class="h-45" ion-button block>Sign up</button>
+      <p class="errorMsg"
+        *ngIf="onRegisterForm.get('confirmPassword').touched && onRegisterForm.get('confirmPassword').hasError('required')">
+        This field is required</p>
+
+      <button (click)="registerUser()" [disabled]="!onRegisterForm.valid" class="h-45" ion-button block>Sign up</button>
+
+      <p class="gray">
+        By using WhatsPay, i agree to its
+        <span class="primary">Terms of Service</span> and
+        <span class="primary">Privacy Policies.</span>
+      </p>
     </div>
 
   </ion-grid>
@@ -69,7 +114,7 @@
     <img src="./assets/imgs/user-check-512.png">
     <h5>Your account has been created successfully!</h5>
     <p>
-      Remember <strong>$12john</strong> is your usercode, and will be used in order to send and receive money.
+      Remember <strong>{{userCode}}</strong> is your usercode, and will be used in order to send and receive money.
     </p>
     <button class="h-45" ion-button block small (click)="navCtrl.push('RegisterCardPage')">Proceed</button>
   </div>

@@ -5,6 +5,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { UtilsProvider } from '../providers/utils/utils';
+import * as firebase from 'firebase';
+
 
 @Component({
   templateUrl: 'app.html'
@@ -17,7 +20,11 @@ export class MyApp {
 
   pages: Array<{ title: string, component: any }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public utils: UtilsProvider) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -54,4 +61,30 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+
+  logout() {
+    var self = this;
+    self.utils.presentLoading();
+    var user = firebase.auth().currentUser;
+    if (user != null) {
+      firebase.auth().signOut().then(() => {
+        localStorage.setItem('userLoggedIn', 'false');
+        self.utils.stopLoading();
+        self.utils.createToast("User Logged Out");
+        localStorage.clear();
+        self.nav.setRoot('LoginPage');
+      })
+        .catch((error) => {
+          self.utils.stopLoading();
+          alert(" Error Signing Out");
+        })
+    }
+    else {
+      self.utils.stopLoading();
+      localStorage.clear();
+      self.nav.setRoot('LoginPage');
+    }
+  }
+
 }
