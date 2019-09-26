@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -16,6 +16,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = 'LoginPage';
+  public userName: any;
+  public profileUrl: any;
   public appPages: any;
 
   pages: Array<{ title: string, component: any }>;
@@ -24,9 +26,9 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public utils: UtilsProvider) {
+    public utils: UtilsProvider,
+    public events: Events) {
     this.initializeApp();
-
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
@@ -43,6 +45,11 @@ export class MyApp {
       termsConditions: 'TermsConditionsPage',
     }
 
+    events.subscribe('dataUpdated', () => {
+      debugger;
+      this.userName = localStorage.getItem('firstName') + " " + localStorage.getItem('lastName');
+      this.profileUrl = localStorage.getItem('profileImage');
+    });
     this.statusBar.backgroundColorByHexString('#f1f1f1');
 
   }

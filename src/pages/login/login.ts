@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UtilsProvider } from '../../providers/utils/utils';
@@ -38,7 +38,8 @@ export class LoginPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public utils: UtilsProvider,
-    public _fb: FormBuilder) {
+    public _fb: FormBuilder,
+    public events: Events) {
     if (localStorage.getItem('userLoggedIn') == 'true') {
       navCtrl.setRoot(HomePage);
     }
@@ -128,6 +129,7 @@ export class LoginPage {
       localStorage.setItem('firstName', self.firstName);
       localStorage.setItem('lastName', self.lastName);
       localStorage.setItem('userLoggedIn', 'true');
+      self.events.publish('dataUpdated', "true");
       localStorage.setItem('uid', self.uid);
     });
   }
@@ -160,6 +162,7 @@ export class LoginPage {
           localStorage.setItem('emailAddress', self.emailAddress);
           localStorage.setItem('userCode', user.userCode);
           localStorage.setItem('userLoggedIn', 'true');
+          self.events.publish('dataUpdated', "true");
           localStorage.setItem('uid', user.uid);
           self.utils.stopLoading();
           self.utils.createToast("Logged in!")

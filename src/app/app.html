@@ -2,9 +2,10 @@
   <ion-header padding>
     <ion-grid padding>
       <p class="mb-0">
-        <img src="./assets/imgs/user.png" menuClose class="userImg" (click)="nav.push(appPages.profilePage)">
+        <img [src]="profileUrl || './assets/imgs/user.png'" menuClose class="userImg"
+          (click)="nav.setRoot(appPages.profilePage)">
       </p>
-      <p class="userName">John Doe</p>
+      <p class="userName">{{userName}}</p>
     </ion-grid>
   </ion-header>
 
@@ -14,7 +15,7 @@
         <ion-icon name="home" item-start></ion-icon>
         Home <ion-icon name="ios-arrow-forward" item-end></ion-icon>
       </button>
-      <button menuClose ion-item icon-left (click)="nav.push(appPages.profilePage)">
+      <button menuClose ion-item icon-left (click)="nav.setRoot(appPages.profilePage)">
         <ion-icon name="person" item-start></ion-icon>
         Profile <ion-icon name="ios-arrow-forward" item-end></ion-icon>
       </button>

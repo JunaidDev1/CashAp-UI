@@ -223,7 +223,6 @@ ion-menu {
   }
 
   .userName {
-    padding-left: 10px;
     color: #ffffff;
     margin: 0px !important;
   }
@@ -273,7 +272,7 @@ ion-menu {
     img {
       width: 80px;
     }
-    hr{
+    hr {
       border-top: 1px solid #dedede;
       margin: 0px !important;
     }
@@ -285,8 +284,7 @@ ion-menu {
   }
 }
 
-
-.errorMsg{
+.errorMsg {
   color: color($colors, danger);
   font-size: 12px;
   padding-left: 5px;
