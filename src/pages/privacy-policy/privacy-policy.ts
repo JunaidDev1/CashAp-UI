@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UtilsProvider } from '../../providers/utils/utils';
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the PrivacyPolicyPage page.
@@ -15,11 +17,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PrivacyPolicyPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public data: any = {};
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public utils: UtilsProvider) {
+    this.getPrivacyPolicy();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PrivacyPolicyPage');
+  getPrivacyPolicy() {
+    var self = this;
+    self.utils.presentLoading();
+    firebase.database().ref().child('/settings' + '/' + 'data')
+      .once('value', (snapshot) => {
+        self.data = snapshot.val();
+        self.data.privacyPolicy = self.data.privacyPolicy;
+        self.utils.stopLoading();
+      })
   }
 
 }

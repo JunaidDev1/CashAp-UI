@@ -46,7 +46,6 @@ export class MyApp {
     }
 
     events.subscribe('dataUpdated', () => {
-      debugger;
       this.userName = localStorage.getItem('firstName') + " " + localStorage.getItem('lastName');
       this.profileUrl = localStorage.getItem('profileImage');
     });

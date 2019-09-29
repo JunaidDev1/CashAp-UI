@@ -131,6 +131,7 @@ export class ProfilePage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true,
+      allowEdit: true,
       sourceType: 1,
     }
     this.camera.getPicture(options).then((imageData) => {
@@ -150,6 +151,7 @@ export class ProfilePage {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       correctOrientation: true,
+      allowEdit: true,
       sourceType: 2,
     }
 

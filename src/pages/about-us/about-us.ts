@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { UtilsProvider } from '../../providers/utils/utils';
+import * as firebase from 'firebase';
+
 
 /**
  * Generated class for the AboutUsPage page.
@@ -15,7 +18,24 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class AboutUsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public data: any = {};
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public utils: UtilsProvider) {
+    this.aboutUs();
+  }
+
+  aboutUs() {
+    var self = this;
+    self.utils.presentLoading();
+    firebase.database().ref().child('/settings' + '/' + 'data')
+      .once('value', (snapshot) => {
+        self.data = snapshot.val();
+        self.data.aboutUs = self.data.aboutUs;
+        self.utils.stopLoading();
+      })
   }
 
   ionViewDidLoad() {

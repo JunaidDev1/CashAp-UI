@@ -40,10 +40,11 @@ export class LoginPage {
     public utils: UtilsProvider,
     public _fb: FormBuilder,
     public events: Events) {
-    if (localStorage.getItem('userLoggedIn') == 'true') {
+    if (localStorage.getItem('emailAddress') == 'true') {
       navCtrl.setRoot(HomePage);
     }
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
@@ -138,16 +139,30 @@ export class LoginPage {
   onLogin() {
     var self = this;
     self.utils.presentLoading();
-    firebase.auth().signInWithEmailAndPassword(self.emailAddress, self.password).then((user) => {
-      if (user) {
-        self.getUserData();
+    firebase.database().ref().child('users').once('value', (snapshot) => {
+      var users = snapshot.val();
+      for (var key in users) {
+        var user = users[key];
+        if (user.contactEmail == self.emailAddress || user.phone == self.emailAddress) {
+          var userFound = true;
+          var email = user.contactEmail;
+          firebase.auth().signInWithEmailAndPassword(email, self.password).then((user) => {
+            if (user) {
+              self.getUserData();
+            }
+          })
+            .catch((error) => {
+              var errorMessage = error.message;
+              self.utils.stopLoading();
+              self.utils.createToast(errorMessage);
+            });
+        }
       }
-    })
-      .catch((error) => {
-        var errorMessage = error.message;
+      if (!userFound) {
+        alert("Invalid Email or Phone Number!");
         self.utils.stopLoading();
-        self.utils.createToast(errorMessage);
-      });
+      }
+    });
   }
 
   getUserData() {
@@ -160,13 +175,28 @@ export class LoginPage {
           localStorage.setItem('firstName', user.firstName);
           localStorage.setItem('lastName', user.lastName);
           localStorage.setItem('emailAddress', self.emailAddress);
+          localStorage.setItem('profileImage', user.profileUrl);
           localStorage.setItem('userCode', user.userCode);
           localStorage.setItem('userLoggedIn', 'true');
           self.events.publish('dataUpdated', "true");
           localStorage.setItem('uid', user.uid);
           self.utils.stopLoading();
-          self.utils.createToast("Logged in!")
-          self.navCtrl.setRoot(HomePage)
+          if (user.status) {
+            if (user.status == "blocked") {
+              alert("You are restricted to use WhatsPay!");
+              localStorage.setItem('userLoggedIn', 'false');
+              localStorage.clear();
+              self.navCtrl.setRoot('LoginPage');
+            }
+            else {
+              self.utils.createToast("Logged in!");
+              self.navCtrl.setRoot(HomePage)
+            }
+          }
+          else {
+            self.utils.createToast("Logged in!");
+            self.navCtrl.setRoot(HomePage);
+          }
         }
       }
     });
