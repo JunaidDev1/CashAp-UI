@@ -40,7 +40,7 @@ export class LoginPage {
     public utils: UtilsProvider,
     public _fb: FormBuilder,
     public events: Events) {
-    if (localStorage.getItem('emailAddress') == 'true') {
+    if (localStorage.getItem('userLoggedIn') == 'true') {
       navCtrl.setRoot(HomePage);
     }
   }

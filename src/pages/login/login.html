@@ -30,7 +30,8 @@
         </ion-input>
       </ion-item>
       <p class="errorMsg"
-        *ngIf="onLoginForm.get('emailAddress').touched && onLoginForm.get('emailAddress').hasError('required')">Email or Phone Number
+        *ngIf="onLoginForm.get('emailAddress').touched && onLoginForm.get('emailAddress').hasError('required')">Email or
+        Phone Number
         is required</p>
 
       <ion-item no-lines>
@@ -73,7 +74,8 @@
         Invalid Email address</p>
 
       <ion-item no-lines>
-        <ion-input [(ngModel)]="phoneNumber" formControlName="phoneNumber" type="tel" placeholder="Phone Number">
+        <ion-input [(ngModel)]="phoneNumber" formControlName="phoneNumber" type="tel"
+          placeholder="Phone (+18430000000)">
         </ion-input>
       </ion-item>
       <p class="errorMsg"
@@ -99,8 +101,8 @@
 
       <p class="gray">
         By using WhatsPay, i agree to its
-        <span class="primary">Terms of Service</span> and
-        <span class="primary">Privacy Policies.</span>
+        <span (click)="navCtrl.push('TermsConditionsPage')" class="primary">Terms of Service</span> and
+        <span (click)="navCtrl.push('PrivacyPolicyPage')" class="primary">Privacy Policies.</span>
       </p>
     </div>
 

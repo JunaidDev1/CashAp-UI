@@ -23,7 +23,7 @@
       <img (click)="showConfirm()" [src]="user.imagePath || './assets/imgs/user.png'">
     </ion-avatar>
     <ion-label>
-      <h2>John Doe</h2>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
       <p>Member since: {{user.memberSince}}</p>
     </ion-label>
   </ion-item>

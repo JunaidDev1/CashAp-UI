@@ -20,6 +20,17 @@
     <ion-item no-lines>
       <ion-input type="tel" placeholder="Enter Amount"></ion-input>
     </ion-item>
+    <ion-item no-lines>
+      <ion-label>Currency:</ion-label>
+      <ion-select interface="action-sheet">
+        <ion-option selected="true">USD - $</ion-option>
+        <ion-option>Euro - &euro;</ion-option>
+        <ion-option>Brazilian Real - R$</ion-option>
+        <ion-option>Indian Rupee - &#8377;</ion-option>
+        <ion-option>Pakistani Rupee - Rs</ion-option>
+        <ion-option>UAE - AED</ion-option>
+      </ion-select>
+    </ion-item>
   </div>
   <button class="h-45" (click)="showConfirm=true" ion-button block>Proceed</button>
 

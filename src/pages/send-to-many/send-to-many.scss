@@ -1,5 +1,10 @@
 page-send-to-many {
   ion-content {
+    ion-item {
+      ion-select {
+        max-width: 100% !important;
+      }
+    }
     div {
       ion-input {
         background-color: color($colors, light);

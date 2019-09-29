@@ -12,7 +12,18 @@
 
 <ion-content padding>
 
-  <div class="boxShadow bg-white mb-1" *ngFor="let user of allUsers">
+  <ion-item no-lines class="boxShadow">
+    <ion-label>Currency:</ion-label>
+    <ion-select interface="action-sheet">
+      <ion-option selected="true">USD - $</ion-option>
+      <ion-option>Euro - &euro;</ion-option>
+      <ion-option>Brazilian Real - R$</ion-option>
+      <ion-option>Indian Rupee - &#8377;</ion-option>
+      <ion-option>Pakistani Rupee - Rs</ion-option>
+      <ion-option>UAE - AED</ion-option>
+    </ion-select>
+  </ion-item>
+  <div class="boxShadow bg-white mb-1 mt-1" *ngFor="let user of allUsers">
     <ion-row>
       <ion-col col-5>
         <ion-input type="text" placeholder="Usercode"></ion-input>

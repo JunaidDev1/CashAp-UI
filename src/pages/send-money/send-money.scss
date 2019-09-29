@@ -9,6 +9,10 @@ page-send-money {
       padding-left: 10px !important;
       margin-bottom: 10px !important;
 
+      ion-select {
+        max-width: 100% !important;
+      }
+
       h5 {
         margin-top: 0px !important;
       }
